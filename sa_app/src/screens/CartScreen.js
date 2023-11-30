@@ -2,6 +2,19 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
 
 const CartScreen = ({ navigation }) => {
+	const { pedido, setPedidoAtual } = useMeuContexto();
+	function cancelarCompra() {
+		const usuarioId = pedido.id;
+
+    api.delete(`users/${usuarioId}`).then((response) => {
+		setPedidoAtual(null);
+		navigation.navigate("Welcome");
+    }
+    ).catch((error) => {
+      console.log(error);
+    });
+
+	}
 	return (
 		<View style={{ flex: 1, alignItems: "center" }}>
 			<Image
@@ -15,7 +28,7 @@ const CartScreen = ({ navigation }) => {
 			
 
 			<TouchableOpacity
-				onPress={() => navigation.navigate("WelcomeScreen")}
+				onPress={cancelarCompra}
 				style={{
 					backgroundColor: "#f96163",
 					borderRadius: 18,
