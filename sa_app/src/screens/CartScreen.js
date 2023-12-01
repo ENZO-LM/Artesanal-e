@@ -1,19 +1,20 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
+import { useMeuContexto } from '../../contexto';
 
 const CartScreen = ({ navigation }) => {
-	const { pedido, setPedidoAtual } = useMeuContexto();
 	function cancelarCompra() {
+		const { pedido, setPedidoAtual } = useMeuContexto();
 		const usuarioId = pedido.id;
-
-    api.delete(`users/${usuarioId}`).then((response) => {
+	
+	api.delete(`users/${usuarioId}`).then((response) => {
 		setPedidoAtual(null);
 		navigation.navigate("Welcome");
-    }
-    ).catch((error) => {
-      console.log(error);
-    });
-
+	}
+	).catch((error) => {
+	  console.log(error);
+	});
+	
 	}
 	return (
 		<View style={{ flex: 1, alignItems: "center" }}>

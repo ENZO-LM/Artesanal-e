@@ -12,23 +12,18 @@ import {
 	TouchableOpacity
 } from "react-native";
 import React from "react";
-import { useMeuContexto } from '../../../contexto';
+import { useMeuContexto } from '../../contexto';
 import { useState } from 'react';
-import api from '../../services/api';
-
-const [nome, setNome] = useState('');
-const [telefone, setTelefone] = useState('');
-const [endereco, setEndereco] = useState('');
-const [quantidade, setQuantidade] = useState('');
-
-
-
-
-
+// import api from '../services/api';
 
 const LastScreen = ({ navigation }) => {
-	const { pedido, setPedidoAtual } = useMeuContexto();
+	const [nome, setNome] = useState('');
+	const [telefone, setTelefone] = useState('');
+	const [endereco, setEndereco] = useState('');
+	const [quantidade, setQuantidade] = useState('');
 	function SendDatabase() {
+		const { pedido, setPedidoAtual } = useMeuContexto();
+		
 		const pedidoCadastrar = {
 			nome: nome,
 			telefone: telefone,
